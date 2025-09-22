@@ -1,0 +1,23 @@
+# docker-compose.yaml
+
+services:
+  db:
+    image: postgres
+
+    container_name: my_postgres_db
+
+    environment:
+      - POSTGRES_USER=qbean
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=mydb
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
